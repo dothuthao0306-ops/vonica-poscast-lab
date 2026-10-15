@@ -19,27 +19,24 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                <div class="w-10 h-10 wearai-gradient rounded-xl flex items-center justify-center text-white font-bold text-xl shadow">
-                    W
-                </div>
+                <div class="w-10 h-10 wearai-gradient rounded-xl flex items-center justify-center text-white font-bold text-xl shadow">W</div>
                 <div>
                     <h1 class="text-xl font-bold text-gray-900 tracking-tight">Wear<span class="text-indigo-600">AI</span></h1>
-                    <p class="text-[10px] text-gray-500">Tủ đồ số & Trợ lý thời trang thông minh</p>
+                    <p class="text-[10px] text-gray-500">Hệ thống Tủ đồ & Phối đồ thông minh</p>
                 </div>
             </div>
 
             <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
                 <button onclick="switchTab('wardrobe')" class="hover:text-indigo-600 nav-btn py-2" id="btn-wardrobe"><i class="fa-solid fa-shirt mr-1"></i> Tủ đồ số</button>
                 <button onclick="switchTab('stylist')" class="hover:text-indigo-600 nav-btn py-2" id="btn-stylist"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> AI Phối đồ</button>
-                <button onclick="switchTab('planner')" class="hover:text-indigo-600 nav-btn py-2" id="btn-planner"><i class="fa-solid fa-calendar-days mr-1"></i> Lịch mặc đồ</button>
-                <button onclick="switchTab('analytics')" class="hover:text-indigo-600 nav-btn py-2" id="btn-analytics"><i class="fa-solid fa-chart-pie mr-1"></i> Phân tích tủ đồ</button>
-                <button onclick="switchTab('partner')" class="hover:text-indigo-600 nav-btn py-2" id="btn-partner"><i class="fa-solid fa-store mr-1"></i> Đối tác Nhãn hàng</button>
+                <button onclick="switchTab('partner')" class="hover:text-indigo-600 nav-btn py-2" id="btn-partner"><i class="fa-solid fa-store mr-1"></i> Cổng Nhãn hàng</button>
                 <button onclick="switchTab('admin')" class="hover:text-indigo-600 nav-btn py-2" id="btn-admin"><i class="fa-solid fa-user-shield mr-1"></i> Quản trị CMS</button>
             </nav>
 
-            <div>
-                <button onclick="openModal('auth-modal')" class="wearai-gradient text-white text-sm font-medium px-4 py-2 rounded-xl transition shadow hover:opacity-90">
-                    <i class="fa-solid fa-right-to-bracket mr-1"></i> Đăng nhập / Đăng ký
+            <div class="flex items-center space-x-3">
+                <span id="current-user-badge" class="text-xs bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full font-semibold">Vai trò: Khách hàng</span>
+                <button onclick="openModal('auth-modal')" class="wearai-gradient text-white text-xs font-semibold px-4 py-2 rounded-xl shadow hover:opacity-90 transition">
+                    <i class="fa-solid fa-right-to-bracket mr-1"></i> Đăng nhập / Chọn Role
                 </button>
             </div>
         </div>
@@ -52,138 +49,88 @@
         <section id="tab-home" class="tab-content space-y-6">
             <div class="wearai-gradient rounded-3xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-2/3 space-y-4">
-                    <span class="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Hệ thống Thương mại điện tử Thời trang AI</span>
-                    <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Giải quyết triệt để áp lực "Không có gì để mặc" mỗi sáng</h2>
-                    <p class="text-indigo-100 text-sm md:text-base">Số hóa tủ đồ thực tế[cite: 1, 2], bóc tách phông nền tự động bằng thị giác máy tính[cite: 1, 2], kết hợp thời tiết thực tế[cite: 1, 2] và đề xuất mua sắm qua tiếp thị liên kết (Affiliate)[cite: 1, 2].</p>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <button onclick="switchTab('wardrobe')" class="bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition">
-                            <i class="fa-solid fa-camera mr-2"></i> Số hóa tủ đồ ngay
-                        </button>
-                        <button onclick="switchTab('stylist')" class="bg-indigo-900/40 hover:bg-indigo-900/60 text-white font-semibold px-6 py-3 rounded-xl border border-indigo-300/30 transition">
-                            <i class="fa-solid fa-sparkles mr-2"></i> Trải nghiệm AI Stylist
-                        </button>
-                    </div>
-                </div>
-                <div class="mt-6 md:mt-0 md:w-1/3 flex justify-center">
-                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center w-64 shadow-2xl">
-                        <i class="fa-solid fa-cloud-sun-rain text-5xl text-yellow-300 mb-3"></i>
-                        <h4 class="font-bold text-lg">Hà Nội • 26°C</h4>
-                        <p class="text-xs text-indigo-200">Trời dịu mát, độ ẩm 65%</p>
-                        <div class="mt-4 pt-3 border-t border-white/20 text-xs text-left space-y-1">
-                            <p class="font-semibold text-yellow-200"><i class="fa-solid fa-lightbulb mr-1"></i> Gợi ý thời tiết[cite: 1, 2]:</p>
-                            <p class="text-gray-100">Áo sơ mi + Quần jean + Giày thể thao</p>
-                        </div>
-                    </div>
+                    <span class="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Hệ thống Quản lý & Phối đồ AI</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Trải nghiệm đa phân quyền hệ thống WearAI</h2>
+                    <p class="text-indigo-100 text-sm md:text-base">Hệ thống hỗ trợ 3 nhóm người dùng chính: Người dùng cá nhân, Đối tác nhãn hàng thời trang, và Quản trị viên hệ thống[cite: 1, 2].</p>
+                    <button onclick="openModal('auth-modal')" class="bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition">
+                        <i class="fa-solid fa-users mr-2"></i> Chọn vai trò đăng nhập ngay
+                    </button>
                 </div>
             </div>
         </section>
 
         <!-- WARDROBE TAB -->
         <section id="tab-wardrobe" class="tab-content hidden space-y-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Quản lý Tủ đồ Số cá nhân</h2>
-                    <p class="text-sm text-gray-500">Chụp hoặc tải ảnh trang phục thực tế để hệ thống bóc tách nền và phân loại[cite: 1, 2].</p>
-                </div>
-                <button onclick="openModal('upload-modal')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2.5 rounded-xl transition flex items-center shadow">
-                    <i class="fa-solid fa-plus mr-2"></i> Thêm món đồ mới
-                </button>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="wardrobe-grid"></div>
-        </section>
-
-        <!-- STYLIST TAB -->
-        <section id="tab-stylist" class="tab-content hidden space-y-6">
-            <div>
-                <h2 class="text-2xl font-bold text-gray-900">Trợ lý Phối đồ Thông minh AI</h2>
-                <p class="text-sm text-gray-500">Tạo outfit trọn bộ theo ngữ cảnh[cite: 1, 2] dựa trên các quy chuẩn thẩm mỹ và thời tiết thực tế[cite: 1, 2].</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-                    <h3 class="font-bold text-gray-800 border-b pb-3"><i class="fa-solid fa-sliders text-indigo-600 mr-2"></i> Thiết lập bối cảnh</h3>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">Hoàn cảnh / Sự kiện:</label>
-                        <select id="stylist-event" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm outline-none focus:border-indigo-500">
-                            <option value="office">Đi làm công sở (Office Casual)</option>
-                            <option value="casual">Đi chơi / Dạo phố (Streetwear)</option>
-                            <option value="party">Dự tiệc / Sự kiện (Elegant)</option>
-                            <option value="sport">Thể thao / Vận động (Sporty)</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Khung giải thích cơ sở khẳng định độ đẹp và phù hợp -->
-                    <div class="bg-indigo-50 p-4 rounded-xl text-xs space-y-2 text-indigo-900 border border-indigo-100">
-                        <p class="font-bold"><i class="fa-solid fa-circle-check text-indigo-600 mr-1"></i> Cơ sở AI đánh giá Outfit đẹp & Phù hợp:</p>
-                        <ul class="list-disc pl-4 space-y-1 text-indigo-950">
-                            <li><b>Quy tắc thẩm mỹ:</b> Áp dụng bánh xe màu sắc và tỷ lệ phom dáng chuẩn[cite: 1, 2].</li>
-                            <li><b>Thời tiết thực tế:</b> Đồng bộ qua OpenWeatherMap API (Nhiệt độ, độ ẩm)[cite: 1, 2].</li>
-                            <li><b>Ngữ cảnh sự kiện:</b> Phù hợp tính chất môi trường công sở, tiệc tùng hay dạo phố[cite: 1, 2].</li>
-                        </ul>
-                    </div>
-
-                    <button onclick="generateOutfit()" class="w-full wearai-gradient text-white font-bold py-3.5 rounded-xl shadow hover:opacity-90 transition flex items-center justify-center">
-                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Chạy thuật toán AI Phối đồ
-                    </button>
-                </div>
-
-                <div class="lg:col-span-2">
-                    <div id="outfit-result" class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 min-h-[420px] flex flex-col items-center justify-center text-center">
-                        <i class="fa-solid fa-shirt text-5xl text-gray-200 mb-3 animate-pulse"></i>
-                        <p class="text-gray-500 font-medium">Hãy chọn cấu hình và nhấn nút để xem kết quả phối outfit từ Trợ lý AI Stylist!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PLANNER TAB -->
-        <section id="tab-planner" class="tab-content hidden space-y-6">
-            <div>
-                <h2 class="text-2xl font-bold text-gray-900">Lịch & Kế hoạch Trang phục</h2>
-                <p class="text-sm text-gray-500">Sắp xếp lịch mặc đồ trong tuần và theo dõi tần suất sử dụng trang phục[cite: 1, 2].</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-7 gap-3" id="calendar-grid"></div>
-        </section>
-
-        <!-- ANALYTICS TAB -->
-        <section id="tab-analytics" class="tab-content hidden space-y-6">
-            <div>
-                <h2 class="text-2xl font-bold text-gray-900">Phân tích & Báo cáo Tủ đồ</h2>
-                <p class="text-sm text-gray-500">Đánh giá ma trận tủ đồ[cite: 1, 2], phát hiện đồ lâu chưa mặc và đề xuất bổ sung[cite: 1, 2].</p>
-            </div>
+            <h2 class="text-2xl font-bold text-gray-900">Phân hệ: Người dùng Tủ đồ cá nhân</h2>
+            <p class="text-sm text-gray-500">Quản lý tủ đồ ảo, số hóa trang phục và nhận gợi ý phối đồ AI theo ngữ cảnh thời tiết[cite: 1, 2].</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="wardrobe-grid"></div>
         </section>
 
         <!-- PARTNER TAB -->
         <section id="tab-partner" class="tab-content hidden space-y-6">
-            <div>
-                <h2 class="text-2xl font-bold text-gray-900">Partner Portal - Cổng Nhãn hàng Đối tác</h2>
-                <p class="text-sm text-gray-500">Quản lý catalog sản phẩm[cite: 1, 2], cài đặt mã Affiliate Link[cite: 1, 2] và đối soát doanh thu[cite: 1, 2].</p>
+            <h2 class="text-2xl font-bold text-gray-900">Phân hệ: Đối tác Nhãn hàng thời trang</h2>
+            <p class="text-sm text-gray-500">Nạp Catalog sản phẩm, cài đặt Affiliate Link và theo dõi chuyển đổi đơn hàng[cite: 1, 2].</p>
+            <div class="bg-white p-6 rounded-2xl border shadow-sm">
+                <p class="text-xs font-bold text-green-700 mb-2">✅ Đã xác thực quyền Đối tác (Ví dụ: IVY Moda / CANIFA)</p>
+                <p class="text-xs text-gray-600">Quản lý các sản phẩm ghép nối khoảng trống tủ đồ và đối soát hoa hồng chiết khấu[cite: 1, 2].</p>
             </div>
         </section>
 
         <!-- ADMIN TAB -->
         <section id="tab-admin" class="tab-content hidden space-y-6">
-            <div>
-                <h2 class="text-2xl font-bold text-gray-900">CMS Admin - Quản trị Hệ thống WearAI</h2>
-                <p class="text-sm text-gray-500">Giám sát hạ tầng đám mây phi tập trung Akash Network[cite: 1, 2] và đối soát tài chính[cite: 1, 2].</p>
+            <h2 class="text-2xl font-bold text-gray-900">Phân hệ: Quản trị viên hệ thống (CMS Admin)</h2>
+            <p class="text-sm text-gray-500">Giám sát hạ tầng đám mây phi tập trung Akash Network[cite: 1, 2], kiểm duyệt dữ liệu và quản lý tài chính.</p>
+            <div class="bg-white p-6 rounded-2xl border shadow-sm">
+                <p class="text-xs font-bold text-red-700 mb-2">🔒 Quyền Quản trị Tối cao (Super Admin)</p>
+                <p class="text-xs text-gray-600">Kiểm soát toàn bộ tài khoản người dùng, cấu hình quy tắc AI Stylist và đối soát doanh thu hoa hồng hệ thống[cite: 1, 2].</p>
             </div>
         </section>
 
+        <!-- STYLIST TAB -->
+        <section id="tab-stylist" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900">Trợ lý Phối đồ Thông minh AI</h2>
+            <p class="text-sm text-gray-500">Tạo outfit trọn bộ và quét khoảng trống tủ đồ kết nối sản phẩm nhãn hàng[cite: 1, 2].</p>
+        </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-white border-t border-gray-100 py-6 mt-12 text-center text-xs text-gray-500">
-        <p>© 2026 WearAI System • Phát triển Hệ thống Thương mại Điện tử • Trường Đại học Thủy Lợi</p>
-    </footer>
+    <!-- MODAL CHỌN VAI TRÒ ĐĂNG NHẬP -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 text-center">
+            <h3 class="font-bold text-lg text-gray-900">Đăng nhập / Chọn vai trò hệ thống</h3>
+            <p class="text-xs text-gray-500">Vui lòng chọn phân hệ người dùng bạn muốn trải nghiệm theo yêu cầu đề tài:</p>
+            
+            <div class="space-y-3 pt-2">
+                <button onclick="loginAs('user', 'Người dùng cá nhân')" class="w-full text-left p-4 rounded-xl border hover:border-indigo-600 hover:bg-indigo-50/50 transition flex items-center space-x-3">
+                    <i class="fa-solid fa-user text-indigo-600 text-lg"></i>
+                    <div>
+                        <p class="font-bold text-sm text-gray-800">1. Người dùng tủ đồ cá nhân</p>
+                        <p class="text-[10px] text-gray-500">Quản lý tủ đồ số, nhận gợi ý phối đồ AI, lịch mặc đồ[cite: 1, 2].</p>
+                    </div>
+                </button>
+
+                <button onclick="loginAs('partner', 'Đối tác nhãn hàng')" class="w-full text-left p-4 rounded-xl border hover:border-green-600 hover:bg-green-50/50 transition flex items-center space-x-3">
+                    <i class="fa-solid fa-store text-green-600 text-lg"></i>
+                    <div>
+                        <p class="font-bold text-sm text-gray-800">2. Đối tác nhãn hàng thời trang</p>
+                        <p class="text-[10px] text-gray-500">Nạp catalog sản phẩm, theo dõi lượt click Affiliate[cite: 1, 2].</p>
+                    </div>
+                </button>
+
+                <button onclick="loginAs('admin', 'Quản trị viên')" class="w-full text-left p-4 rounded-xl border hover:border-red-600 hover:bg-red-50/50 transition flex items-center space-x-3">
+                    <i class="fa-solid fa-user-shield text-red-600 text-lg"></i>
+                    <div>
+                        <p class="font-bold text-sm text-gray-800">3. Quản trị viên hệ thống WearAI</p>
+                        <p class="text-[10px] text-gray-500">Quản lý hệ thống, giám sát Akash Network, đối soát hoa hồng[cite: 1, 2].</p>
+                    </div>
+                </button>
+            </div>
+            
+            <button onclick="closeModal('auth-modal')" class="text-xs text-gray-400 hover:text-gray-600 pt-2">Đóng cửa sổ</button>
+        </div>
+    </div>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        let wardrobeData = [
-            { id: 1, name: "Áo Sơ mi Trắng", category: "áo", color: "Trắng", img: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=300&auto=format&fit=crop&q=80" },
-            { id: 2, name: "Quần Jean Xanh Regular", category: "quần", color: "Xanh", img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&auto=format&fit=crop&q=80" },
-            { id: 3, name: "Giày Sneaker Trắng", category: "giày", color: "Trắng", img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&auto=format&fit=crop&q=80" }
-        ];
-
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active-tab'));
@@ -192,58 +139,29 @@
             const btn = document.getElementById(`btn-${tabId}`);
             if (btn) btn.classList.add('active-tab');
 
-            if (tabId === 'wardrobe') renderWardrobe(wardrobeData);
-            if (tabId === 'planner') renderCalendar();
+            if (tabId === 'wardrobe') renderWardrobe();
         }
 
-        function renderWardrobe(items) {
+        function renderWardrobe() {
             const grid = document.getElementById('wardrobe-grid');
-            grid.innerHTML = '';
-            items.forEach(item => {
-                grid.innerHTML += `
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 p-3 text-center">
-                        <img src="${item.img}" class="h-28 mx-auto object-contain mix-blend-multiply">
-                        <h4 class="font-bold text-xs text-gray-800 mt-2 truncate">${item.name}</h4>
-                    </div>
-                `;
-            });
-        }
-
-        function generateOutfit() {
-            const container = document.getElementById('outfit-result');
-            container.innerHTML = `
-                <div class="w-full space-y-4 text-left">
-                    <div class="flex justify-between items-center border-b pb-3">
-                        <div>
-                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">AI Stylist Gợi ý</span>
-                            <h3 class="font-bold text-lg text-gray-800 mt-1">Smart Office Outfit chuẩn thẩm mỹ</h3>
-                        </div>
-                    </div>
-                    <div class="p-3 bg-green-50 border border-green-200 rounded-xl text-xs text-green-900 space-y-1">
-                        <p class="font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Kiểm duyệt độ phù hợp thành công:</p>
-                        <p>• Phối màu đồng điệu (Bánh xe màu sắc tương phản nhẹ).</p>
-                        <p>• Phù hợp nhiệt độ 26°C ngoài trời (Thoáng mát, lịch sự).</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="border p-3 rounded-xl text-center bg-gray-50">
-                            <img src="${wardrobeData[0].img}" class="h-24 mx-auto object-contain">
-                            <p class="text-xs font-bold mt-1">${wardrobeData[0].name}</p>
-                        </div>
-                        <div class="border p-3 rounded-xl text-center bg-gray-50">
-                            <img src="${wardrobeData[1].img}" class="h-24 mx-auto object-contain">
-                            <p class="text-xs font-bold mt-1">${wardrobeData[1].name}</p>
-                        </div>
-                    </div>
-                </div>
+            grid.innerHTML = `
+                <div class="bg-white p-3 rounded-xl border text-center"><img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=300&auto=format&fit=crop&q=80" class="h-24 mx-auto object-contain"><p class="text-xs font-bold mt-2">Áo Sơ mi Trắng</p></div>
+                <div class="bg-white p-3 rounded-xl border text-center"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&auto=format&fit=crop&q=80" class="h-24 mx-auto object-contain"><p class="text-xs font-bold mt-2">Quần Jean Xanh</p></div>
             `;
         }
 
-        function renderCalendar() {
-            const container = document.getElementById('calendar-grid');
-            ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'].forEach(day => {
-                container.innerHTML += `<div class="bg-white p-3 rounded-2xl border shadow-sm text-xs font-bold text-center">${day}</div>`;
-            });
+        function loginAs(roleKey, roleName) {
+            document.getElementById('current-user-badge').innerText = `Vai trò: ${roleName}`;
+            closeModal('auth-modal');
+            alert(`Đăng nhập thành công với tư cách: ${roleName}!`);
+            
+            if (roleKey === 'user') switchTab('wardrobe');
+            else if (roleKey === 'partner') switchTab('partner');
+            else if (roleKey === 'admin') switchTab('admin');
         }
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
         switchTab('home');
     </script>
